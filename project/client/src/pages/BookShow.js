@@ -45,7 +45,7 @@ const BookShow = () => {
             Screen this side, you will be watching in this direction
           </p>
           <div className="screen-div"></div>
-        </div>
+        <br />
         <ul className="seat-ul justify-content-center">
           {Array.from(Array(rows).keys()).map((row) => {
             return Array.from(Array(columns).keys()).map((column) => {
@@ -87,15 +87,15 @@ const BookShow = () => {
                   <li>
                     <button
                       onClick={() => {
-                        if (selectedSeats.includes(seatNumber)) {
-                          setSelectedSeats(
-                            selectedSeats.filter(
-                              (curSeatNumber) => curSeatNumber !== seatNumber
-                            )
-                          );
-                        } else {
-                          setSelectedSeats([...selectedSeats, seatNumber]);
-                        }
+                          if(!show.bookedSeats.includes(seatNumber)){
+                          if (selectedSeats.includes(seatNumber)) {
+                            setSelectedSeats(
+                              selectedSeats.filter((seat) => seat !== seatNumber)
+                            );
+                          } else {
+                            setSelectedSeats([...selectedSeats, seatNumber]);
+                          }
+                          }
                       }}
                       className={seatClass}
                     >
